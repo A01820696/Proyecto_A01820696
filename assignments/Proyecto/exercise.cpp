@@ -9,25 +9,25 @@ int main()
 {
     srand(time(0));
 
-    Personaje caballero(100, 30, 3);
-    Personaje orco(120, 25, 2);
+    Personaje IronMan (100, 30, 3);
+    Personaje Thanos(120, 25, 2);
 
     cout << "Estado inicial:" << endl;
-    cout << "Caballero:" << endl;
-    caballero.imprimir();
+    cout << "IronMan:" << endl;
+    IronMan.imprimir();
 
-    cout << "Orco:" << endl;
-    orco.imprimir();
+    cout << "Thanos:" << endl;
+    Thanos.imprimir();
 
-    cout << "El caballero ataca al orco." << endl;
-    caballero.atacar(orco);
+    cout << "IronMan ataca a Thanos." << endl;
+    IronMan.atacar(Thanos);
 
     cout << "Estado despues del ataque:" << endl;
-    cout << "Caballero:" << endl;
-    caballero.imprimir();
+    cout << "IronMan:" << endl;
+    IronMan.imprimir();
 
-    cout << "Orco:" << endl;
-    orco.imprimir();
+    cout << "Thanos:" << endl;
+    Thanos.imprimir();
 
     return 0;
 }
