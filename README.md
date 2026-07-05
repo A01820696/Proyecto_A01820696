@@ -1,25 +1,31 @@
-# Ejercicios - Básicos
+# UML
 
-Ubíquese en la **carpeta fuente del proyecto** deseado, use:
+```mermaid
+classDiagram
+    class Personaje {
+        - int vida
+        - int salud
+        - int ataque
+        - int nivel
 
+        + Personaje()
+        + Personaje(int vida, int ataque, int nivel)
+
+        + int getVida()
+        + int getSalud()
+        + int getAtaque()
+        + int getNivel()
+
+        + void setVida(int vida)
+        + void setSalud(int salud)
+        + void setAtaque(int ataque)
+        + void setNivel(int nivel)
+
+        + int porcentajeSalud()
+        + void imprimeBarra()
+        + int calculaAtaque(Personaje& objetivo)
+        + void recibeAtaque(int ptosAtaque)
+        + void atacar(Personaje& objetivo)
+        + void imprimir()
+    }
 ```
-cd <assignments/NombreCarpeta>
-
-Ej.- cd assignments/Proyecto
-
-```
-Regresar a una **carpeta anterior**, use:
-
-```
-Ej.- cd ../
-
-```
-
-Regrese a la **carpeta fuente inical, como está cuando cargas el codespace**, use:
-
-```
-Ej.- cd ../../
-
-```
-
-

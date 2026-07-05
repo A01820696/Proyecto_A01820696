@@ -1,26 +1,31 @@
-# Construcción - Comandos básicos
+# UML
 
-Los comandos siguientes funcionan en un entorno de programación Linux para la compilación y ejecución de cualquier `assignment`, deben ejecutarse dentro de la carpeta del proyecto.
+```mermaid
+classDiagram
+    class Personaje {
+        - int vida
+        - int salud
+        - int ataque
+        - int nivel
 
-### Compile+Run commands
-```
-make
-```
-### Compile command
-```
-make compile
-```
-### Run command
-```
-make run
-```
+        + Personaje()
+        + Personaje(int vida, int ataque, int nivel)
 
-### Clean command
+        + int getVida()
+        + int getSalud()
+        + int getAtaque()
+        + int getNivel()
+
+        + void setVida(int vida)
+        + void setSalud(int salud)
+        + void setAtaque(int ataque)
+        + void setNivel(int nivel)
+
+        + int porcentajeSalud()
+        + void imprimeBarra()
+        + int calculaAtaque(Personaje& objetivo)
+        + void recibeAtaque(int ptosAtaque)
+        + void atacar(Personaje& objetivo)
+        + void imprimir()
+    }
 ```
-make clean
-```
-### Debug command
-```
-make debug
-```
-Mini-tutorial : https://u.osu.edu/cstutorials/2018/09/28/how-to-debug-c-program-using-gdb-in-6-simple-steps/
