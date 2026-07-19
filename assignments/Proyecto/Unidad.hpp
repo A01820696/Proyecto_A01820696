@@ -15,6 +15,7 @@ protected:
 
 public:
     Unidad(string nombre, int vida, int ataque, int nivel);
+    virtual ~Unidad();
 
     string getNombre();
     int getVida();
@@ -30,7 +31,13 @@ public:
     virtual int calculaAtaque();
     virtual void recibeAtaque(int danio);
 
+    // Método virtual puro
+    virtual void revive() = 0;
+
     bool estaViva();
+
+    // Sobrecarga del operador <<
+    friend ostream& operator<<(ostream& os, Unidad& unidad);
 };
 
 #endif

@@ -6,6 +6,7 @@
 class Arquero : public Unidad {
 private:
     int precision;
+    bool yaRevivio;
 
 public:
     Arquero(string nombre, int vida, int ataque, int nivel, int precision);
@@ -16,6 +17,7 @@ public:
     void imprime() override;
     int calculaAtaque() override;
     void recibeAtaque(int danio) override;
+    void revive() override;
 };
 
 #endif

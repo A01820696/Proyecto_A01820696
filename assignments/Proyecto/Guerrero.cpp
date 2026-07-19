@@ -3,6 +3,7 @@
 Guerrero::Guerrero(string nombre, int vida, int ataque, int nivel, int fuerza)
     : Unidad(nombre, vida, ataque, nivel) {
     this->fuerza = fuerza;
+    this->yaRevivio = false;
 }
 
 int Guerrero::getFuerza() {
@@ -32,10 +33,21 @@ void Guerrero::recibeAtaque(int danio) {
 
     vida -= danioReducido;
 
-    if (vida < 0) {
+    if (vida <= 0) {
         vida = 0;
+        revive();
     }
 
-    cout << nombre << " redujo el daño con su fuerza. Daño recibido: "
-         << danioReducido << endl;
+    cout << nombre << " recibio " << danioReducido << " puntos de daño." << endl;
+}
+
+void Guerrero::revive() {
+    if (!yaRevivio && fuerza >= 8) {
+        vida = 20;
+        fuerza -= 4;
+        yaRevivio = true;
+        cout << nombre << " revivio gracias a su fuerza de guerrero." << endl;
+    } else {
+        cout << nombre << " murio y no pudo revivir." << endl;
+    }
 }

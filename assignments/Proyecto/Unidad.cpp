@@ -7,6 +7,8 @@ Unidad::Unidad(string nombre, int vida, int ataque, int nivel) {
     this->nivel = nivel;
 }
 
+Unidad::~Unidad() {}
+
 string Unidad::getNombre() {
     return nombre;
 }
@@ -60,4 +62,9 @@ void Unidad::recibeAtaque(int danio) {
 
 bool Unidad::estaViva() {
     return vida > 0;
+}
+
+ostream& operator<<(ostream& os, Unidad& unidad) {
+    unidad.imprime();
+    return os;
 }

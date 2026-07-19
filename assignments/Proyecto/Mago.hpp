@@ -6,6 +6,7 @@
 class Mago : public Unidad {
 private:
     int mana;
+    bool yaRevivio;
 
 public:
     Mago(string nombre, int vida, int ataque, int nivel, int mana);
@@ -16,6 +17,7 @@ public:
     void imprime() override;
     int calculaAtaque() override;
     void recibeAtaque(int danio) override;
+    void revive() override;
 };
 
 #endif

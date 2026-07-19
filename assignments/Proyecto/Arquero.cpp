@@ -3,6 +3,7 @@
 Arquero::Arquero(string nombre, int vida, int ataque, int nivel, int precision)
     : Unidad(nombre, vida, ataque, nivel) {
     this->precision = precision;
+    this->yaRevivio = false;
 }
 
 int Arquero::getPrecision() {
@@ -46,10 +47,21 @@ void Arquero::recibeAtaque(int danio) {
 
     vida -= danioFinal;
 
-    if (vida < 0) {
+    if (vida <= 0) {
         vida = 0;
+        revive();
     }
 
-    cout << nombre << " intenta esquivar con su precision. Daño recibido: "
-         << danioFinal << endl;
+    cout << nombre << " recibio " << danioFinal << " puntos de daño." << endl;
+}
+
+void Arquero::revive() {
+    if (!yaRevivio && precision >= 90) {
+        vida = 15;
+        precision -= 30;
+        yaRevivio = true;
+        cout << nombre << " revivio gracias a su precision." << endl;
+    } else {
+        cout << nombre << " murio y no pudo revivir." << endl;
+    }
 }

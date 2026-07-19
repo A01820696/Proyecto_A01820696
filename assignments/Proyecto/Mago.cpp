@@ -3,6 +3,7 @@
 Mago::Mago(string nombre, int vida, int ataque, int nivel, int mana)
     : Unidad(nombre, vida, ataque, nivel) {
     this->mana = mana;
+    this->yaRevivio = false;
 }
 
 int Mago::getMana() {
@@ -47,10 +48,21 @@ void Mago::recibeAtaque(int danio) {
 
     vida -= danioFinal;
 
-    if (vida < 0) {
+    if (vida <= 0) {
         vida = 0;
+        revive();
     }
 
-    cout << nombre << " uso mana para protegerse. Daño recibido: "
-         << danioFinal << endl;
+    cout << nombre << " recibio " << danioFinal << " puntos de daño." << endl;
+}
+
+void Mago::revive() {
+    if (!yaRevivio && mana >= 40) {
+        vida = 25;
+        mana -= 40;
+        yaRevivio = true;
+        cout << nombre << " revivio usando su mana." << endl;
+    } else {
+        cout << nombre << " murio y no pudo revivir." << endl;
+    }
 }

@@ -1,33 +1,66 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include "Personaje.hpp"
+#include <vector>
+#include "Unidad.hpp"
+#include "Guerrero.hpp"
+#include "Arquero.hpp"
+#include "Mago.hpp"
 
 using namespace std;
 
-int main()
-{
-    srand(time(0));
+void pelear(Unidad* atacante, Unidad* defensor) {
+    cout << "\n" << atacante->getNombre() << " ataca a "
+         << defensor->getNombre() << endl;
 
-    Personaje IronMan (100, 30, 3);
-    Personaje Thanos(120, 25, 2);
+    int danio = atacante->calculaAtaque();
 
-    cout << "Estado inicial:" << endl;
-    cout << "IronMan:" << endl;
-    IronMan.imprimir();
+    cout << "Daño generado: " << danio << endl;
 
-    cout << "Thanos:" << endl;
-    Thanos.imprimir();
+    defensor->recibeAtaque(danio);
 
-    cout << "IronMan ataca a Thanos." << endl;
-    IronMan.atacar(Thanos);
+    cout << "Estado del atacado:" << endl;
+    cout << *defensor << endl;
+}
 
-    cout << "Estado despues del ataque:" << endl;
-    cout << "IronMan:" << endl;
-    IronMan.imprimir();
+int main() {
+    vector<Unidad*> combatientes;
 
-    cout << "Thanos:" << endl;
-    Thanos.imprimir();
+    combatientes.push_back(new Guerrero("Thor", 120, 20, 3, 8));
+    combatientes.push_back(new Arquero("Legolas", 90, 18, 2, 95));
+    combatientes.push_back(new Mago("Merlin", 80, 15, 4, 100));
+
+    cout << "===== PERSONAJES INICIALES =====" << endl;
+
+    for (int i = 0; i < combatientes.size(); i++) {
+        cout << *combatientes[i] << endl;
+    }
+
+    cout << "===== PRUEBA DE COMBATES =====" << endl;
+
+    for (int i = 0; i < combatientes.size(); i++) {
+        int siguiente = (i + 1) % combatientes.size();
+        pelear(combatientes[i], combatientes[siguiente]);
+    }
+
+    cout << "\n===== PRUEBA DE REVIVE =====" << endl;
+
+    combatientes[0]->recibeAtaque(500);
+    cout << *combatientes[0] << endl;
+
+    combatientes[1]->recibeAtaque(500);
+    cout << *combatientes[1] << endl;
+
+    combatientes[2]->recibeAtaque(500);
+    cout << *combatientes[2] << endl;
+
+    cout << "\n===== ESTADO FINAL =====" << endl;
+
+    for (int i = 0; i < combatientes.size(); i++) {
+        cout << *combatientes[i] << endl;
+    }
+
+    for (int i = 0; i < combatientes.size(); i++) {
+        delete combatientes[i];
+    }
 
     return 0;
 }

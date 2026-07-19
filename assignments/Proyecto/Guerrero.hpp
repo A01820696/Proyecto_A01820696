@@ -6,6 +6,7 @@
 class Guerrero : public Unidad {
 private:
     int fuerza;
+    bool yaRevivio;
 
 public:
     Guerrero(string nombre, int vida, int ataque, int nivel, int fuerza);
@@ -16,6 +17,7 @@ public:
     void imprime() override;
     int calculaAtaque() override;
     void recibeAtaque(int danio) override;
+    void revive() override;
 };
 
 #endif
